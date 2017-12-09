@@ -34,7 +34,7 @@ parser = many (instruction <* ((skipMany1 endOfLine) <|> eof))
             name <- reg <* space
             operator <- op <* space
             operad <- num <* space 
-            (char 'i') <* (char 'f') <* space
+            string "if" <* space
             comparedRegister <- reg <* space
             comparison <- cmp <* space
             comparedValue <- num

@@ -40,7 +40,7 @@ parser = group
         closeGarbage = char '>'
         garbageContent = noneOf "!>"
         garbageEscape = cancel <$> ((char '!') *> anyChar)
-        cancel _ = "" 
+        cancel = const "" 
 
 runTests = map (solve1 0 . fromRight (Garbage "") . runParser parser () "test") tests
 runTests2 = map (solve2 . fromRight (Garbage "") . runParser parser () "test") tests
