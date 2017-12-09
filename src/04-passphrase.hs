@@ -7,7 +7,7 @@ import qualified Data.Set as S
 import qualified Data.Text as T
 
 readInput = do 
-    content <- readFile "input/04.txt"
+    content <- readFile "../input/04.txt"
     pure $ lines content
 
 test = 

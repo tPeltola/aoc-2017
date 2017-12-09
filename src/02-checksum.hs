@@ -6,7 +6,7 @@ import Data.Maybe
 import qualified Data.Text as T
 
 readInput = do 
-    content <- readFile "input/02.txt"
+    content <- readFile "../input/02.txt"
     pure $ lines content
 
 test1 = 
