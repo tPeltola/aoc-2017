@@ -34,10 +34,10 @@ main = do
     putStrLn $ show $ dance (fromRight [] inputMoves) $ V.fromList ['a'..'p']
     putStrLn $ show $ justDance (fromRight [] inputMoves) $ V.fromList ['a'..'p']
 
-justDance moves programs = go (1000000000 `mod` 48) programs
+justDance moves programs = foldl go programs $ take (1000000000 `mod` cycle) [0..]
     where
-        go 0 programs = programs
-        go n !programs = go (n - 1) $ dance moves programs
+        go programs _ = dance moves programs
+        cycle = fst $ head $ filter ((==) programs . snd) $ tail $ zip [0..] $ scanl go programs [0..]
 
 dance [] programs = programs
 dance (move:rest) !programs = dance rest programs'
